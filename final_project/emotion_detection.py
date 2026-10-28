@@ -14,6 +14,16 @@ def emotion_detector(text_to_analyze):
     payload = {"raw_document": {"text": text_to_analyze}}
 
     response = requests.post(url, headers=headers, json=payload)
+    if response.status_code == 400:
+        return {
+            "anger": None,
+            "disgust": None,
+            "fear": None,
+            "joy": None,
+            "sadness": None,
+            "dominant_emotion": None,
+        }
+
     response_data = json.loads(response.text)
     emotion_scores = response_data["emotionPredictions"][0]["emotion"]
     emotions = {

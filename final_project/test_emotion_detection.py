@@ -6,6 +6,26 @@ from final_project.EmotionDetection import emotion_detector
 
 
 class EmotionDetectorTests(unittest.TestCase):
+    def test_bad_request_returns_none_for_every_emotion(self):
+        with patch(
+            "final_project.emotion_detection.requests.post",
+            return_value=Mock(status_code=400, text=""),
+        ) as post:
+            result = emotion_detector("")
+
+        self.assertEqual(
+            result,
+            {
+                "anger": None,
+                "disgust": None,
+                "fear": None,
+                "joy": None,
+                "sadness": None,
+                "dominant_emotion": None,
+            },
+        )
+        post.assert_called_once()
+
     def test_dominant_emotion_for_each_statement(self):
         test_cases = (
             ("I am glad this happened", "joy"),
