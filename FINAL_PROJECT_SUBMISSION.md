@@ -266,7 +266,7 @@ Emotion detector: HTTP 200
 For the given statement, the system response is 'anger': 0.006274985, 'disgust': 0.0025598293, 'fear': 0.009251528, 'joy': 0.9680386 and 'sadness': 0.049744144. The dominant emotion is <strong>joy</strong>.
 ```
 
-The emotion result above used a mocked detector response. A deployment screenshot for the positive statement is not included in this file; a live Watson-backed screenshot could not be verified in this environment.
+The emotion result above used a mocked detector response. The screenshot [6b_deployment_test.png](./6b_deployment_test.png) also shows a simulated Watson response because a live Watson-backed result could not be verified in this environment.
 
 ## Task 7: Error handling
 
@@ -294,7 +294,7 @@ HTTP/1.1 400 BAD REQUEST
 Invalid text! Please try again!
 ```
 
-The browser UI displayed the same message for blank input. The screenshot was shown during the task session, but is not embedded or saved as a separate image in this single-file submission.
+The browser UI displayed the same message for blank input. See [7c_error_handling_interface.png](./7c_error_handling_interface.png). The browser response was simulated as HTTP 400 to exercise the UI handling.
 
 ## Task 8: Static code analysis
 
