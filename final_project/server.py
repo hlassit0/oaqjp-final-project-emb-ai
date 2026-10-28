@@ -1,3 +1,5 @@
+"""Flask web application for emotion detection."""
+
 from flask import Flask, render_template, request
 
 from final_project.EmotionDetection import emotion_detector
@@ -11,11 +13,13 @@ app = Flask(
 
 @app.get("/")
 def home():
+    """Render the emotion detection homepage."""
     return render_template("index.html")
 
 
 @app.get("/emotionDetector")
 def detect_emotion():
+    """Analyze the submitted text and return its emotion scores."""
     text_to_analyze = request.args.get("textToAnalyze", "")
     emotions = emotion_detector(text_to_analyze)
     if emotions["dominant_emotion"] is None:
